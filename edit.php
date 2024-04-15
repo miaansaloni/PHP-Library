@@ -1,41 +1,74 @@
 <?php
 include __DIR__ . '/includes/db.php';
 
+$errors = [];
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $id = $_POST['id'];
-    $titolo = $_POST['titolo'];
-    $autore = $_POST['autore'];
-    $anno_pubblicazione = $_POST['anno_pubblicazione'];
-    $genere = $_POST['genere'];
+    // validazione
+    if (empty($_POST['titolo'])) {
+        $errors[] = "Title field is required.";
+    }
+    if (empty($_POST['autore'])) {
+        $errors[] = "Author field is required.";
+    }
+    if (empty($_POST['anno_pubblicazione'])) {
+        $errors[] = "Year of publication is required";
+    }
+    if (empty($_POST['genere'])) {
+        $errors[] = "Genre field is required.";
+    }
+    if (empty($_POST['copertina'])) {
+        $errors[] = "Cover image field is required.";
+    }
 
-    $stmt = $pdo->prepare("UPDATE libri SET titolo=?, autore=?, anno_pubblicazione=?, genere=? WHERE id=?");
-    $stmt->execute([$titolo, $autore, $anno_pubblicazione, $genere, $id]);
+    // AGGIORNAMENTO DB SE NON CI SONO ERRORI
+    if (empty($errors)) {
+        $id = $_POST['id'];
+        $titolo = $_POST['titolo'];
+        $autore = $_POST['autore'];
+        $anno_pubblicazione = $_POST['anno_pubblicazione'];
+        $genere = $_POST['genere'];
+        $copertina = $_POST['copertina'];
 
-    header("Location: /PHP-Library/");
-    exit();
+        $stmt = $pdo->prepare("UPDATE libri SET titolo=?, autore=?, anno_pubblicazione=?, genere=?, copertina=? WHERE id=?");
+        $stmt->execute([$titolo, $autore, $anno_pubblicazione, $genere, $copertina, $id]);
+
+        header("Location: /PHP-Library/");
+        exit();
+    }
 }
 
 // RECUPERO DEI DATI DA MODIFICARE
 $id = $_GET['id'];
 $stmt = $pdo->prepare("SELECT * FROM libri WHERE id = ?");
 $stmt->execute([$id]);
-$user = $stmt->fetch();
+$libri = $stmt->fetch();
 
-
-include __DIR__ . '/includes/init.php'
+include __DIR__ . '/includes/init.php';
 ?>
 
+<?php if (!empty($errors)): ?>
+    <div class="alert alert-danger">
+        <ul>
+            <?php foreach ($errors as $error): ?>
+                <li><?= $error ?></li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+<?php endif; ?>
 
-<form method="post">
-    <input type="hidden" name="id" value="<?= $user['id'] ?>">
-    <label for="titolo">Title:</label><br>
-    <input type="text" id="titolo" name="titolo" value="<?= $user['titolo'] ?>"><br>
-    <label for="autore">Author:</label><br>
-    <input type="text" id="autore" name="autore" value="<?= $user['autore'] ?>"><br>
-    <label for="anno_pubblicazione">Published:</label><br>
-    <input type="text" id="anno_pubblicazione" name="anno_pubblicazione" value="<?= $user['anno_pubblicazione'] ?>"><br>
-    <label for="genere">Genre:</label><br>
-    <input type="text" id="genere" name="genere" value="<?= $user['genere'] ?>"><br><br>
-    <button type="submit" class="btn edit-btn">Edit</button>
+<form method="post" class="text-center pt-5">
+    <input type="hidden" name="id" value="<?= $libri['id'] ?>">
+    <label class="mt-2 fw-bold h6" for="titolo">Title:</label><br>
+    <input class="w-75" type="text" id="titolo" name="titolo" value="<?= $libri['titolo'] ?>"><br>
+    <label class="mt-2 fw-bold h6" for="autore">Author:</label><br>
+    <input class="w-75" type="text" id="autore" name="autore" value="<?= $libri['autore'] ?>"><br>
+    <label class="mt-2 fw-bold h6" for="anno_pubblicazione">Published:</label><br>
+    <input class="w-75" type="text" id="anno_pubblicazione" name="anno_pubblicazione" value="<?= $libri['anno_pubblicazione'] ?>"><br>
+    <label class="mt-2 fw-bold h6" for="genere">Genre:</label><br>
+    <input class="w-75" type="text" id="genere" name="genere" value="<?= $libri['genere'] ?>"><br><br>
+    <label class="mt-2 fw-bold h6" for="copertina">Cover:</label><br>
+    <input class="w-75" type="text" id="copertina" name="copertina" value="<?= $libri['copertina'] ?>"><br><br>
+    <button type="submit" class="btn btn-outline-warning">Edit</button>
 </form><?php
 include __DIR__ . '/includes/end.php';

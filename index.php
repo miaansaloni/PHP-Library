@@ -21,7 +21,7 @@ if (isset($_GET['search'])) {
 
 include __DIR__ . '/includes/init.php'; ?>
 
-<div id="header" class="text-center">
+<div class="text-center header h2 d-flex align-items-center text-white">
 Are you looking for a new read? Or maybe you want to share your favourite book with the world? Either way you're in the right place! 
 </div>
 
@@ -40,7 +40,7 @@ Are you looking for a new read? Or maybe you want to share your favourite book w
              <?php foreach ($stmt as $line) {?>
              <div class="my-2 col-lg-3">
                 <div class="card h-100">
-                 <!-- <img src=<?="$line[copertina]"?> class="card-img-top" alt="..."> -->
+                 <img src=<?="$line[copertina]"?> class="card-img-top" alt="">
                  <div class="card-body">
                  <h5 class="card-title"><?="$line[titolo]"?></h5>
                  <h6>Author: <?="$line[autore]"?></h6>
@@ -49,7 +49,7 @@ Are you looking for a new read? Or maybe you want to share your favourite book w
                 <div class="d-flex justify-content-evenly p-3">
                     <a href="/PHP-Library/details.php?id=<?= $line['id'] ?>" class="btn btn-outline-info">Details</a>
                     <a href="/PHP-Library/delete.php?id=<?= $line['id'] ?>" class="btn btn-outline-danger">Delete</a>
-                    <a href="/PHP-Library/edit.php?id=<?= $line['id'] ?>" class="btn bg-transparent">Edit</a>
+                    <a href="/PHP-Library/edit.php?id=<?= $line['id'] ?>" class="btn btn-outline-warning">Edit</a>
                 </div>
                 <p class="m-0 text-end pe-3" style="font-size: small;">Book ID: <?="$line[id]"?></p>
              </div>
