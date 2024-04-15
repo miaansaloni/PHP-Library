@@ -20,7 +20,11 @@ $id = $_GET['id'];
 $stmt = $pdo->prepare("SELECT * FROM libri WHERE id = ?");
 $stmt->execute([$id]);
 $user = $stmt->fetch();
+
+
+include __DIR__ . '/includes/init.php'
 ?>
+
 
 <form method="post">
     <input type="hidden" name="id" value="<?= $user['id'] ?>">
@@ -32,6 +36,6 @@ $user = $stmt->fetch();
     <input type="text" id="anno_pubblicazione" name="anno_pubblicazione" value="<?= $user['anno_pubblicazione'] ?>"><br>
     <label for="genere">Genre:</label><br>
     <input type="text" id="genere" name="genere" value="<?= $user['genere'] ?>"><br><br>
-    <button type="submit">Edit</button>
+    <button type="submit" class="btn edit-btn">Edit</button>
 </form><?php
 include __DIR__ . '/includes/end.php';
