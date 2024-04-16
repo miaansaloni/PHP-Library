@@ -39,7 +39,7 @@ Either way you're in the right place!
     <div class="container">
         <div class="row">
              <?php foreach ($stmt as $line) {?>
-             <div class="my-2 col-lg-3">
+             <div class="my-2 col-xs-6 col-sm-6 col-sm-4 col-md-4 col-lg-3">
                 <div class="card h-100">
                  <img src=<?="$line[copertina]"?> class="card-img-top" alt="">
                  <div class="card-body">
@@ -62,11 +62,13 @@ Either way you're in the right place!
     </div>
 <nav>
     <ul class="pagination justify-content-center">
-        <?php for ($i = 1; $i <= $totalPages; $i++) {?>
-            <li class="page-item <?= $i === $current_page ? 'active' : '' ?>">
-                <a class="page-link" href="?page=<?= $i ?><?= isset($_GET['search']) ? '&search=' . $_GET['search'] : '' ?>"><?= $i ?></a>
-            </li>
-        <?php }?>
+    <?php for ($i = 1; $i <= $totalPages; $i++) {?>
+    <li class="page-item <?= $i === $current_page ? 'active' : '' ?>">
+        <a class="page-link" href="?page=<?= $i ?><?= isset($_GET['search']) ? '&search=' . $_GET['search'] : '' ?>" style="background-color: <?= $i === $current_page ? '#B5C18E' : 'transparent' ?>; border: transparent"><?= $i ?></a>
+    </li>
+    <?php }?>
+
+
     </ul>
 </nav>
 </div>

@@ -71,7 +71,7 @@ include __DIR__ . '/includes/init.php';
         <input class="w-50" type="text" id="genere" name="genere" value="<?= $libri['genere'] ?>"><br><br>
         <label class="mt-2 fw-bold h6" for="copertina">Cover:</label><br>
         <input class="w-50" type="text" id="copertina" name="copertina" value="<?= $libri['copertina'] ?>"><br><br>
-        <button type="submit" class="btn btn-outline-warning w-25 mt-3">Edit</button>
+        <button type="submit" class="btn searchBTN w-25 mt-3">Edit</button>
     </form>
 </div><?php
 include __DIR__ . '/includes/end.php';

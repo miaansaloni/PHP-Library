@@ -12,6 +12,10 @@
 .navbar{
   background-color: #DEAC80;
 }
+
+body{
+  background-color: #F7DCB9;
+}
 .headerTop{
   display: flex;
   justify-content: end;
@@ -24,12 +28,17 @@
   font-size: 35px;
   line-height: 1.2;
   position: absolute;
+  color: #F7DCB9;
 }
-
 .searchBTN{
-  border: 1px solid #DEAC80;
-  color: #DEAC80;
+  border: 1px solid #B5C18E;
+  color: #B5C18E;
   margin-inline-start: 1rem;
+}
+.searchBTN:hover{
+  border: 1px solid #B5C18E;
+  color: white;
+  background-color: #B5C18E;
 }
 
 .detailsBTN{
@@ -53,6 +62,80 @@ h2{
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   color: #B99470;
 }
+
+footer .container-fluid{
+  background-color: #DEAC80;
+}
+
+footer{
+  color: #F7DCB9;
+}
+.footer-h{
+  color: #F7DCB9;
+}
+
+a{
+  text-decoration: none;
+  color: #F7DCB9;
+}
+@media (width < 576px) {
+.headerTop{
+display: none;
+}
+h2{
+  font-size: 30px;
+}
+}
+@media (width >= 576px) {
+.headerTop{
+padding: 10px;
+line-height: 1;
+font-size: 15px;
+}
+h2{
+  font-size: 35px;
+}
+}
+@media (width >= 768px) {
+  .headerTop{
+padding: 10px;
+line-height: 1.1;
+font-size: 20px;
+}
+h2{
+  font-size: 35px;
+}
+}
+@media (width >= 992px) {
+  .headerTop{
+  display: flex;
+  justify-content: end;
+  padding: 10px;
+  margin: 0;
+  color: white;
+  text-align: end;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 1.2;
+  position: absolute;
+}
+}
+@media (width >= 1200px) {
+  .headerTop{
+  display: flex;
+  justify-content: end;
+  padding-inline: 2rem;
+  padding-top: 2rem;
+  margin: 0;
+  color: white;
+  text-align: end;
+  font-weight: bold;
+  font-size: 35px;
+  line-height: 1.2;
+  position: absolute;
+}
+}
+
 </style>
   </head>
 
@@ -69,7 +152,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
           <a class="nav-link active text-white fw-bold" aria-current="page" href="http://localhost/PHP-Library/">HOME</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white" href="/PHP-Library/add.php">Add your favourite book</a>
+          <a class="nav-link text-white" href="/PHP-Library/add.php">Share your favourite book!</a>
         </li>
         <!-- <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
