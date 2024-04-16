@@ -57,6 +57,8 @@ include __DIR__ . '/includes/init.php';
     </div>
 <?php endif; ?>
 
+
+
 <form method="post" class="text-center pt-5">
     <input type="hidden" name="id" value="<?= $libri['id'] ?>">
     <label class="mt-2 fw-bold h6" for="titolo">Title:</label><br>
