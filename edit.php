@@ -46,7 +46,6 @@ $libri = $stmt->fetch();
 
 include __DIR__ . '/includes/init.php';
 ?>
-
 <?php if (!empty($errors)): ?>
     <div class="alert alert-danger">
         <ul>
@@ -58,19 +57,21 @@ include __DIR__ . '/includes/init.php';
 <?php endif; ?>
 
 
-
-<form method="post" class="text-center pt-5">
-    <input type="hidden" name="id" value="<?= $libri['id'] ?>">
-    <label class="mt-2 fw-bold h6" for="titolo">Title:</label><br>
-    <input class="w-75" type="text" id="titolo" name="titolo" value="<?= $libri['titolo'] ?>"><br>
-    <label class="mt-2 fw-bold h6" for="autore">Author:</label><br>
-    <input class="w-75" type="text" id="autore" name="autore" value="<?= $libri['autore'] ?>"><br>
-    <label class="mt-2 fw-bold h6" for="anno_pubblicazione">Published:</label><br>
-    <input class="w-75" type="text" id="anno_pubblicazione" name="anno_pubblicazione" value="<?= $libri['anno_pubblicazione'] ?>"><br>
-    <label class="mt-2 fw-bold h6" for="genere">Genre:</label><br>
-    <input class="w-75" type="text" id="genere" name="genere" value="<?= $libri['genere'] ?>"><br><br>
-    <label class="mt-2 fw-bold h6" for="copertina">Cover:</label><br>
-    <input class="w-75" type="text" id="copertina" name="copertina" value="<?= $libri['copertina'] ?>"><br><br>
-    <button type="submit" class="btn btn-outline-warning">Edit</button>
-</form><?php
+<div class="text-center mt-4">
+<h1 class="mb-3">Edit a book from our library:</h1>
+    <form method="post" >
+        <input type="hidden" name="id" value="<?= $libri['id'] ?>">
+        <label class="mt-2 fw-bold h6" for="titolo">Title:</label><br>
+        <input class="w-50" type="text" id="titolo" name="titolo" value="<?= $libri['titolo'] ?>"><br>
+        <label class="mt-2 fw-bold h6" for="autore">Author:</label><br>
+        <input class="w-50" type="text" id="autore" name="autore" value="<?= $libri['autore'] ?>"><br>
+        <label class="mt-2 fw-bold h6" for="anno_pubblicazione">Published:</label><br>
+        <input class="w-50" type="text" id="anno_pubblicazione" name="anno_pubblicazione" value="<?= $libri['anno_pubblicazione'] ?>"><br>
+        <label class="mt-2 fw-bold h6" for="genere">Genre:</label><br>
+        <input class="w-50" type="text" id="genere" name="genere" value="<?= $libri['genere'] ?>"><br><br>
+        <label class="mt-2 fw-bold h6" for="copertina">Cover:</label><br>
+        <input class="w-50" type="text" id="copertina" name="copertina" value="<?= $libri['copertina'] ?>"><br><br>
+        <button type="submit" class="btn btn-outline-warning w-25 mt-3">Edit</button>
+    </form>
+</div><?php
 include __DIR__ . '/includes/end.php';
